@@ -29,7 +29,13 @@ class UserTableSeeder extends Seeder {
     $manageUsers->display_name = 'Manage Users';
     $manageUsers->save();
 
+    $manageRoles = new Permission;
+    $manageRoles->name = 'manage_roles';
+    $manageRoles->display_name = 'Manage Roles';
+    $manageRoles->save();
+
     $admin->perms()->sync(array($manageUsers->id));
+    $admin->perms()->sync(array($manageRoles->id));
       Log::info('Created user "'.$user->username.'" <'.$user->email.'>');
     }
   }
