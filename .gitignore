@@ -3,6 +3,7 @@
 ### Laravel ###
 /bootstrap/compiled.php
 /vendor
+/app/config/local
 .env.*.php
 .env.php
 

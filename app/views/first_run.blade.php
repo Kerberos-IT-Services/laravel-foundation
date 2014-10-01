@@ -57,10 +57,17 @@
 		$manageUsers->display_name = 'Manage Users';
 		$manageUsers->save();
 
-		$admin->perms()->sync(array($manageUsers->id));
+        $manageRoles = new Permission;
+        $manageRoles->name = 'manage_roles';
+        $manageRoles->display_name = 'Manage Roles';
+        $manageRoles->save();
+
+        $admin->perms()->sync(array($manageUsers->id));
+		$admin->perms()->sync(array($manageRoles->id));
 
 		echo "Rol: ".$user->hasRole("Admin")."<br />";
-		echo "Permiso: ".$user->can("manage_users")."<br />";
+        echo "Permiso: ".$user->can("manage_users")."<br />";
+		echo "Permiso: ".$user->can("manage_roles")."<br />";
 
     	Log::info('Created user "'.$user->username.'" <'.$user->email.'>');
     }
